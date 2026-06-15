@@ -1,0 +1,6 @@
+{
+  "name": "SpaceBook",
+  "description": "A secure room booking portal for viewing available rooms, making reservations, managing bookings, and administration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

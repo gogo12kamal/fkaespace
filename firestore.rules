@@ -1,0 +1,127 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Catch-all safety net: Default deny all.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Global primitives
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isEmailVerified() {
+      return isSignedIn() && (
+        request.auth.token.email_verified == true ||
+        request.auth.token.email != null
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Admin check: checks if verified email matches the bootstrapped admin email OR uid matches the specific admin UID OR is in the admin directory
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.uid == "U3ZvzThJVAdGN95lWSGNon5Cfrm2" ||
+        (request.auth.token.email != null && request.auth.token.email.lower() == "gogo12kamal@gmail.com") ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    // Admins Collection
+    match /admins/{adminId} {
+      allow get: if isSignedIn();
+      allow list: if false; // Block scraping of admin identities
+      allow write: if false; // Strictly writeable only from console/server
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow get: if isSignedIn() && (userId == request.auth.uid || isAdmin());
+      allow list: if isAdmin(); // Only admins can scan human profiles
+      allow create: if isSignedIn() && userId == request.auth.uid && isEmailVerified() &&
+                    request.resource.data.uid == request.auth.uid &&
+                    request.resource.data.email.lower() == request.auth.token.email.lower() &&
+                    request.resource.data.role == (request.auth.token.email.lower() == "gogo12kamal@gmail.com" ? 'admin' : 'user') &&
+                    request.resource.data.keys().hasAll(['uid', 'email', 'role']) &&
+                    request.resource.data.keys().size() <= 6;
+      
+      allow update: if isSignedIn() && (userId == request.auth.uid || isAdmin()) && (
+        userId == request.auth.uid ? (
+          request.resource.data.uid == resource.data.uid &&
+          request.resource.data.email.lower() == resource.data.email.lower() &&
+          request.resource.data.role == resource.data.role &&
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['displayName', 'updatedAt'])
+        ) : true
+      );
+      allow delete: if isAdmin();
+    }
+
+    // Rooms Collection
+    match /rooms/{roomId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // Bookings Collection
+    match /bookings/{bookingId} {
+      allow get: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      allow list: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin()); // Pivot Pillar 8: enforced rule-side list scoping
+
+      allow create: if isSignedIn() && isEmailVerified() && isValidId(bookingId) &&
+                    request.resource.data.id == bookingId &&
+                    request.resource.data.userId == request.auth.uid &&
+                    request.resource.data.userEmail.lower() == request.auth.token.email.lower() &&
+                    request.resource.data.status == 'pending' &&
+                    request.resource.data.createdAt is string &&
+                    request.resource.data.updatedAt is string &&
+                    request.resource.data.roomId is string &&
+                    request.resource.data.roomName is string &&
+                    request.resource.data.userName is string &&
+                    request.resource.data.roomId.size() <= 128 &&
+                    request.resource.data.roomName.size() <= 128 &&
+                    request.resource.data.userName.size() <= 128 &&
+                    request.resource.data.purpose is string &&
+                    request.resource.data.purpose.size() <= 500 &&
+                    request.resource.data.date is string &&
+                    request.resource.data.date.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$') &&
+                    request.resource.data.startTime is string &&
+                    request.resource.data.startTime.matches('^[0-9]{2}:[0-9]{2}$') &&
+                    request.resource.data.endTime is string &&
+                    request.resource.data.endTime.matches('^[0-9]{2}:[0-9]{2}$') &&
+                    exists(/databases/$(database)/documents/rooms/$(request.resource.data.roomId));
+
+      allow update: if isSignedIn() && (
+        // Admin: Can modify anything (e.g. approve/reject, change times, correct issues)
+        isAdmin() || 
+        // Standard User: Can ONLY cancel booking (transition status to 'rejected'/cancelled)
+        (
+          isEmailVerified() &&
+          resource.data.userId == request.auth.uid &&
+          // Ensure they don't hijack fields - must keep all other details identical
+          request.resource.data.id == resource.data.id &&
+          request.resource.data.roomId == resource.data.roomId &&
+          request.resource.data.roomName == resource.data.roomName &&
+          request.resource.data.userId == resource.data.userId &&
+          request.resource.data.userEmail.lower() == resource.data.userEmail.lower() &&
+          request.resource.data.userName == resource.data.userName &&
+          request.resource.data.date == resource.data.date &&
+          request.resource.data.startTime == resource.data.startTime &&
+          request.resource.data.endTime == resource.data.endTime &&
+          request.resource.data.purpose == resource.data.purpose &&
+          request.resource.data.createdAt == resource.data.createdAt &&
+          request.resource.data.status == 'rejected' && // Mandatory cancellation state
+          request.resource.data.updatedAt is string &&
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt'])
+        )
+      );
+
+      // Cancel/Delete capability is handled as status transition to 'rejected' for audit history. Direct deletions blocked.
+      allow delete: if isAdmin();
+    }
+  }
+}
