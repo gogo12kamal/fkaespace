@@ -176,7 +176,7 @@ export default function Dashboard({ user }: DashboardProps) {
                     System Admin
                   </span>
                 ) : (
-                  <span className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Staff</span>
+                  <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md">USER</span>
                 )}
               </div>
             </div>
