@@ -3,11 +3,81 @@
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  /* Redefine indigo to luxury Maroon color palette */
+  --color-indigo-50: #fbf1f1;
+  --color-indigo-100: #ffdcdc;
+  --color-indigo-200: #ffb8b8;
+  --color-indigo-300: #f58e8e;
+  --color-indigo-400: #e05e5e;
+  --color-indigo-505: #cd3636;
+  --color-indigo-500: #b91c1c;
+  --color-indigo-600: #800000; /* Pure deep Maroon standard */
+  --color-indigo-650: #6b0000;
+  --color-indigo-700: #570000;
+  --color-indigo-800: #420000;
+  --color-indigo-900: #2d0000;
+  --color-indigo-950: #1a0000;
+
+  /* Align orange/amber accents to match maroon branding */
+  --color-orange-500: #800000;
+  --color-orange-600: #6b0000;
+  
+  /* Additional visual helpers */
+  --color-maroon-primary: #800000;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: #f8fafc; /* elegant slate off-white */
-  color: #1e293b; /* deep slate blue-gray */
+  background-color: #ffffff; /* pure clinical white page canvas */
+  color: #1c1917; /* deep stone charcoal */
   min-height: 100vh;
+}
+
+/* Light theme overrides for Administrator Dashboard conforming to Maroon & White */
+#admin-workspace-layout {
+  background-color: #fafafa !important;
+  color: #1c1917 !important;
+}
+
+#admin-workspace-layout .bg-slate-900,
+#admin-workspace-layout .bg-slate-950,
+#admin-workspace-layout .bg-slate-955,
+#admin-workspace-layout .bg-slate-950/60,
+#admin-workspace-layout .bg-slate-950/50,
+#admin-workspace-layout .bg-slate-955/85,
+#admin-workspace-layout .bg-slate-955/40,
+#admin-workspace-layout .bg-slate-955/50,
+#admin-workspace-layout .bg-slate-900/80,
+#admin-workspace-layout .bg-slate-950/20 {
+  background-color: #ffffff !important;
+  color: #1c1917 !important;
+}
+
+#admin-workspace-layout .border-slate-800,
+#admin-workspace-layout .border-slate-800/80,
+#admin-workspace-layout .border-slate-800/60,
+#admin-workspace-layout .border-slate-700,
+#admin-workspace-layout .border-slate-700/65 {
+  border-color: #e7e5e4 !important; /* light warm stone color */
+}
+
+#admin-workspace-layout .text-slate-100,
+#admin-workspace-layout .text-slate-200,
+#admin-workspace-layout .text-slate-300,
+#admin-workspace-layout .text-white {
+  color: #1c1917 !important;
+}
+
+#admin-workspace-layout .text-slate-400,
+#admin-workspace-layout .text-slate-500 {
+  color: #78716c !important;
+}
+
+#admin-workspace-layout input,
+#admin-workspace-layout select,
+#admin-workspace-layout textarea {
+  background-color: #ffffff !important;
+  color: #1c1917 !important;
+  border-color: #d6d3d1 !important;
 }

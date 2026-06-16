@@ -316,39 +316,39 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col font-sans" id="admin-workspace-layout">
+    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans" id="admin-workspace-layout">
       
       {/* Premium Security Header for Administrators */}
-      <header className="bg-slate-950/60 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-md" id="admin-bar-header">
+      <header className="bg-white/95 border-b border-slate-200 sticky top-0 z-40 backdrop-blur-sm shadow-sm" id="admin-bar-header">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           
           {/* Logo with strict admin badge indication */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-orange-500 text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-orange-500/10">
-              SB
+            <div className="w-10 h-10 rounded-xl bg-orange-500 text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-orange-500/10">
+              FKA
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-sm font-bold text-slate-100 tracking-tight">SpaceBook Console</h1>
-                <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-red-500/10 border border-red-500/30 text-[9px] font-black uppercase text-red-400 tracking-wider rounded-md" id="admin-indicator-badge">
+                <h1 className="text-sm font-bold text-slate-900 tracking-tight">FKAeSpace Console</h1>
+                <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-red-500/10 border border-red-500/30 text-[9px] font-black uppercase text-red-500 tracking-wider rounded-md" id="admin-indicator-badge">
                   <Shield className="w-2.5 h-2.5 animate-pulse" />
                   KONSOL PENTADBIR
                 </span>
               </div>
-              <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-widest mt-0.5">Secure Cloud Space Admin</p>
+              <p className="text-[10px] text-slate-500 font-semibold uppercase tracking-widest mt-0.5">Secure Cloud Space Admin</p>
             </div>
           </div>
 
           {/* Admin Profile Details */}
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex flex-col items-end text-right">
-              <span className="text-xs font-bold text-slate-200">System Root Override</span>
+              <span className="text-xs font-bold text-slate-700 font-sans">System Root Override</span>
               <span className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">{user.email}</span>
             </div>
 
             <button
               onClick={handleSignOut}
-              className="inline-flex items-center justify-center p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white rounded-xl transition-colors border border-slate-700/65 outline-none"
+              className="inline-flex items-center justify-center p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 rounded-xl transition-colors border border-slate-200 outline-none"
               title="Terminate Admin Session"
               id="admin-logout-btn"
             >
@@ -363,34 +363,34 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-6" id="admin-workspace-body">
         
         {/* Glow Status Alert Dashboard Header */}
-        <div className="bg-gradient-to-r from-slate-950 to-slate-900 border border-slate-800 p-5 rounded-3xl flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm" id="admin-status-bar">
+        <div className="bg-white border border-slate-200 p-5 rounded-3xl flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm border-l-4 border-l-indigo-600" id="admin-status-bar">
           <div className="flex items-start gap-4">
-            <div className="p-3 bg-indigo-500/10 rounded-2xl text-indigo-400 shrink-0">
+            <div className="p-3 bg-indigo-50 rounded-2xl text-indigo-600 shrink-0">
               <Database className="w-6 h-6 animate-pulse" />
             </div>
             <div className="space-y-1">
-              <h2 className="text-xs uppercase font-extrabold tracking-widest text-indigo-400">Papan Pemuka Pentadbir Awam (Admin Dashboard)</h2>
-              <p className="text-sm text-slate-300 font-medium leading-relaxed">
-                Uruskan profil pengguna, jejak fail dimuat naik, serta kemaskini secara langsung katalog ruangan mesyuarat SpaceBook.
+              <h2 className="text-xs uppercase font-extrabold tracking-widest text-indigo-600">Papan Pemuka Pentadbir Awam (Admin Dashboard)</h2>
+              <p className="text-sm text-slate-650 font-medium leading-relaxed">
+                Uruskan profil pengguna, jejak fail dimuat naik, serta kemaskini secara langsung katalog ruangan mesyuarat FKAeSpace.
               </p>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pt-1 text-[11px] text-slate-400 font-medium">
-                <span>Total Pengguna: <strong className="text-indigo-400 font-bold">{usersList.length}</strong></span>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pt-1 text-[11px] text-slate-500 font-semibold">
+                <span>Total Pengguna: <strong className="text-indigo-600 font-bold">{usersList.length}</strong></span>
                 <span>•</span>
-                <span>Total Ruangan Semasa: <strong className="text-emerald-400 font-bold">{roomsList.length}</strong></span>
+                <span>Total Ruangan Semasa: <strong className="text-emerald-600 font-bold">{roomsList.length}</strong></span>
                 <span>•</span>
-                <span>Dokumen Tersimpan: <strong className="text-orange-400 font-bold">{bookingsList.filter(b => b.attachmentUrl).length}</strong></span>
+                <span>Dokumen Tersimpan: <strong className="text-orange-600 font-bold">{bookingsList.filter(b => b.attachmentUrl).length}</strong></span>
               </div>
             </div>
           </div>
 
           {/* Tab Selection Navigation Segment */}
-          <div className="bg-slate-955/85 p-1 rounded-2xl border border-slate-800 flex gap-1 self-start md:self-auto shrink-0" id="admin-view-toggle">
+          <div className="bg-slate-100 p-1.5 rounded-2xl border border-slate-200 flex gap-1 self-start md:self-auto shrink-0" id="admin-view-toggle">
             <button
               onClick={() => setAdminTab('users')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
                 adminTab === 'users'
                   ? 'bg-indigo-600 text-white shadow-md'
-                  : 'text-slate-400 hover:text-slate-200'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <Users className="w-4 h-4" />
@@ -401,7 +401,7 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
                 adminTab === 'rooms'
                   ? 'bg-indigo-600 text-white shadow-md'
-                  : 'text-slate-400 hover:text-slate-200'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
               id="admin-tab-rooms-btn"
             >
@@ -413,7 +413,7 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
                 adminTab === 'bookings'
                   ? 'bg-indigo-600 text-white shadow-md'
-                  : 'text-slate-400 hover:text-slate-200'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
               id="admin-tab-bookings-btn"
             >
@@ -424,11 +424,11 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
         </div>
 
         {errorStatus && (
-          <div className="p-4 bg-red-500/10 border border-red-500/20 text-red-300 text-xs rounded-2xl flex items-start gap-3" id="admin-fatal-error">
+          <div className="p-4 bg-red-50 border border-red-200 text-red-800 text-xs rounded-2xl flex items-start gap-3" id="admin-fatal-error">
             <ShieldAlert className="w-5 h-5 shrink-0" />
             <div>
               <p className="font-bold">Access Authority Protocol Error:</p>
-              <p className="text-slate-400 mt-0.5">{errorStatus}</p>
+              <p className="text-red-700 mt-0.5">{errorStatus}</p>
             </div>
           </div>
         )}
@@ -448,9 +448,9 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
               <section className="lg:col-span-7 flex flex-col gap-4" id="admin-users-list-section">
                 
                 {/* Search User Input bar */}
-                <div className="bg-slate-955/40 p-4 rounded-2xl border border-slate-800/80 flex items-center justify-between gap-4" id="admin-user-filter">
+                <div className="bg-white p-4 rounded-2xl border border-slate-200 flex items-center justify-between gap-4 shadow-sm" id="admin-user-filter">
                   <div className="relative flex-1">
-                    <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                    <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                       <Search className="w-4 h-4" />
                     </span>
                     <input
@@ -459,17 +459,17 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       placeholder="Cari emel pengguna, nama paparan, ID unik..."
-                      className="w-full bg-slate-900/80 pl-10 pr-4 py-2.5 border border-slate-800 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 rounded-xl text-xs text-slate-200 placeholder:text-slate-500"
+                      className="w-full bg-slate-50 pl-10 pr-4 py-2.5 border border-slate-200 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 rounded-xl text-xs text-slate-800 placeholder:text-slate-400"
                       id="user-search-input"
                     />
                   </div>
                 </div>
 
                 {/* List Table container */}
-                <div className="bg-slate-950/20 rounded-3xl border border-slate-800/60 overflow-hidden flex flex-col shadow-inner min-h-[460px]" id="admin-users-table">
-                  <div className="p-4 bg-slate-950/50 border-b border-slate-800/80 flex items-center gap-2">
-                    <Users className="w-4.5 h-4.5 text-indigo-400" />
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300">Direktori Pengguna Berdaftar</h3>
+                <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden flex flex-col shadow-sm min-h-[460px]" id="admin-users-table">
+                  <div className="p-4 bg-slate-50 border-b border-slate-200 flex items-center gap-2">
+                    <Users className="w-4.5 h-4.5 text-indigo-600" />
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700">Direktori Pengguna Berdaftar</h3>
                   </div>
 
                   {loadingUsers ? (
@@ -483,7 +483,7 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                       <p className="text-xs font-bold uppercase tracking-wider">Tiada penggunakan ditemui dalam pangkalan.</p>
                     </div>
                   ) : (
-                    <div className="divide-y divide-slate-800/50 flex-1 overflow-y-auto max-h-[500px]" id="user-rows-list">
+                    <div className="divide-y divide-slate-100 flex-1 overflow-y-auto max-h-[500px]" id="user-rows-list">
                       {filteredUsers.map((item) => {
                         const filesCount = getUploadedFilesCount(item.uid);
                         const isSelected = selectedUserId === item.uid;
@@ -501,8 +501,8 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                             onClick={() => setSelectedUserId(item.uid)}
                             className={`w-full text-left p-4.5 transition-all outline-none flex items-center justify-between gap-4 border-l-2 ${
                               isSelected 
-                                ? 'bg-slate-800/40 border-l-indigo-500 text-white' 
-                                : 'hover:bg-slate-800/10 border-l-transparent text-slate-300'
+                                ? 'bg-indigo-50/50 border-l-indigo-600 text-slate-900 font-bold' 
+                                : 'hover:bg-slate-50 border-l-transparent text-slate-700'
                             }`}
                             id={`user-row-btn-${item.uid}`}
                           >
@@ -510,7 +510,7 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                               <div className={`w-9 h-9 rounded-xl flex items-center justify-center uppercase font-bold text-xs shrink-0 ${
                                 isSelected 
                                   ? 'bg-indigo-600 text-white' 
-                                  : 'bg-slate-850 text-slate-400 border border-slate-700/40'
+                                  : 'bg-slate-100 text-slate-500 border border-slate-200'
                               }`}>
                                 {item.email.slice(0, 2)}
                               </div>
@@ -518,22 +518,22 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                                 <h4 className="text-xs font-bold truncate leading-snug">
                                   {item.displayName || 'Nama Rawak'}
                                 </h4>
-                                <p className="text-[10px] text-slate-505 font-mono truncate">{item.email}</p>
+                                <p className="text-[10px] text-indigo-655 font-mono truncate">{item.email}</p>
                               </div>
                             </div>
 
                             <div className="flex items-center gap-6 shrink-0">
                               <div className="hidden sm:flex flex-col items-end text-right">
-                                <span className="text-[9px] uppercase font-bold tracking-wider text-slate-500">Didaftarkan</span>
-                                <span className="text-[11px] font-semibold text-slate-300 mt-0.5">{dateFormatted}</span>
+                                <span className="text-[9px] uppercase font-bold tracking-wider text-slate-400">Didaftarkan</span>
+                                <span className="text-[11px] font-semibold text-slate-600 mt-0.5">{dateFormatted}</span>
                               </div>
 
                               <div className="flex flex-col items-end">
-                                <span className="text-[9px] uppercase font-bold tracking-wider text-slate-500">Jumlah Fail</span>
+                                <span className="text-[9px] uppercase font-bold tracking-wider text-slate-400">Jumlah Fail</span>
                                 <span className={`inline-flex items-center gap-1 mt-0.5 px-2 py-0.5 text-[10px] font-bold rounded-lg ${
                                   filesCount > 0 
-                                    ? 'bg-indigo-500/10 border border-indigo-500/20 text-indigo-400' 
-                                    : 'bg-slate-800 text-slate-500 border border-slate-700/40'
+                                    ? 'bg-indigo-50 border border-indigo-200 text-indigo-600' 
+                                    : 'bg-slate-100 text-slate-400 border border-slate-200'
                                 }`}>
                                   <Paperclip className="w-3.5 h-3.5 shrink-0" />
                                   {filesCount}
@@ -550,11 +550,11 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
 
               {/* Right Column: Uploaded Files Viewer (Lg: col-span-5) */}
               <section className="lg:col-span-5 flex flex-col font-sans" id="admin-files-inspector-section">
-                <div className="bg-slate-950/40 border border-slate-800 rounded-3xl overflow-hidden flex flex-col h-full min-h-[480px]" id="files-inspector-wrapper">
+                <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden flex flex-col h-full min-h-[480px] shadow-sm" id="files-inspector-wrapper">
                   
-                  <div className="p-4 bg-slate-950/70 border-b border-slate-800 flex items-center gap-2">
-                    <Paperclip className="w-4.5 h-4.5 text-indigo-400" />
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300">Pemeriksa Fail Pengguna</h3>
+                  <div className="p-4 bg-slate-50 border-b border-slate-200 flex items-center gap-2">
+                    <Paperclip className="w-4.5 h-4.5 text-indigo-600" />
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700">Pemeriksa Fail Pengguna</h3>
                   </div>
 
                   <div className="p-6 flex-1 flex flex-col justify-between" id="inspector-canvas">
@@ -565,12 +565,12 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
-                          className="py-24 text-center text-slate-500 flex flex-col items-center justify-center gap-3"
+                          className="py-24 text-center text-slate-400 flex flex-col items-center justify-center gap-3"
                           id="inspector-unselected-state"
                         >
-                          <HelpCircle className="w-12 h-12 text-slate-800 animate-pulse" />
-                          <p className="text-xs font-bold uppercase tracking-widest text-slate-600">Pilih Operator</p>
-                          <p className="text-xs text-slate-500 max-w-[240px] leading-relaxed mx-auto mt-1">
+                          <HelpCircle className="w-12 h-12 text-slate-300 animate-pulse" />
+                          <p className="text-xs font-bold uppercase tracking-widest text-slate-500">Pilih Profil</p>
+                          <p className="text-xs text-slate-400 max-w-[240px] leading-relaxed mx-auto mt-1">
                             Sila klik pada senarai nama pengguna di sebelah kiri untuk mengaudit fail-fail lampiran tempahan mereka.
                           </p>
                         </motion.div>
@@ -582,21 +582,21 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                           exit={{ opacity: 0, y: -5 }}
                           className="space-y-6 flex-1 flex flex-col"
                         >
-                          <div className="bg-slate-900/60 p-4 rounded-2xl border border-slate-800/80 space-y-2.5">
-                            <span className="text-[9px] uppercase font-bold tracking-wider text-indigo-400">Pemerhatian Profil</span>
+                          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-2.5">
+                            <span className="text-[9px] uppercase font-bold tracking-wider text-indigo-600">Pemerhatian Profil</span>
                             <div className="space-y-1">
-                              <p className="text-sm font-bold text-slate-200">{selectedUser.displayName || 'SpaceBook User'}</p>
+                              <p className="text-sm font-bold text-slate-800">{selectedUser.displayName || 'FKAeSpace User'}</p>
                               <p className="text-xs text-slate-500 font-mono break-all">{selectedUser.email}</p>
-                              <p className="text-[10px] text-slate-600 font-mono mt-1 break-all select-all">UID: {selectedUser.uid}</p>
+                              <p className="text-[10px] text-slate-450 font-mono mt-1 break-all select-all">UID: {selectedUser.uid}</p>
                             </div>
                           </div>
 
                           <div className="flex-1 space-y-4" id="audited-individual-files-box">
-                            <h4 className="text-[10px] uppercase font-bold tracking-widest text-slate-500">Lampiran Fail ({selectedUserFiles.length})</h4>
+                            <h4 className="text-[10px] uppercase font-bold tracking-widest text-slate-400">Lampiran Fail ({selectedUserFiles.length})</h4>
                             
                             {selectedUserFiles.length === 0 ? (
-                              <div className="py-14 text-center rounded-2xl border border-dashed border-slate-800/50 text-slate-600 flex flex-col items-center justify-center gap-2" id="files-empty-state">
-                                <FileText className="w-8 h-8 text-slate-850" />
+                              <div className="py-14 text-center rounded-2xl border border-dashed border-slate-200 text-slate-400 flex flex-col items-center justify-center gap-2" id="files-empty-state">
+                                <FileText className="w-8 h-8 text-slate-300" />
                                 <p className="text-xs font-bold uppercase tracking-wider">Tiada fail dimuat naik.</p>
                               </div>
                             ) : (
@@ -604,17 +604,17 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                                 {selectedUserFiles.map((fileRecord) => (
                                   <div
                                     key={fileRecord.id}
-                                    className="bg-slate-900/40 p-3 rounded-xl border border-slate-800/60 hover:border-slate-855/90 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                                    className="bg-slate-50/50 p-3 rounded-xl border border-slate-200 hover:border-indigo-200 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                                     id={`audited-file-${fileRecord.id}`}
                                   >
                                     <div className="min-w-0 space-y-1">
-                                      <p className="text-xs font-semibold text-slate-305 truncate" title={fileRecord.attachmentName || 'Review Attachment'}>
+                                      <p className="text-xs font-bold text-slate-800 truncate" title={fileRecord.attachmentName || 'Review Attachment'}>
                                         {fileRecord.attachmentName || 'File Lampiran'}
                                       </p>
                                       <div className="flex flex-wrap items-center gap-2 text-[10px] text-slate-500 font-medium">
-                                        <span>Ruang: <strong className="text-slate-400 font-semibold">{fileRecord.roomName}</strong></span>
+                                        <span>Ruang: <strong className="text-slate-700 font-bold">{fileRecord.roomName}</strong></span>
                                         <span>•</span>
-                                        <span>Tarikh: <strong className="text-slate-400 font-semibold">{fileRecord.date}</strong></span>
+                                        <span>Tarikh: <strong className="text-slate-700 font-semibold">{fileRecord.date}</strong></span>
                                       </div>
                                     </div>
 
@@ -623,7 +623,7 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                                       target="_blank"
                                       referrerPolicy="no-referrer"
                                       rel="noopener noreferrer"
-                                      className="inline-flex items-center gap-1 shrink-0 px-2.5 py-1 bg-indigo-500 hover:bg-indigo-600 active:scale-95 text-xs font-bold text-white rounded-lg transition-all"
+                                      className="inline-flex items-center gap-1 shrink-0 px-2.5 py-1 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-xs font-bold text-white rounded-lg transition-all shadow-sm"
                                       id={`open-attachment-btn-${fileRecord.id}`}
                                     >
                                       Lihat Fail
@@ -638,7 +638,7 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                       )}
                     </AnimatePresence>
                     
-                    <div className="pt-4 border-t border-slate-800/70 text-[10px] text-slate-600 text-center leading-relaxed">
+                    <div className="pt-4 border-t border-slate-100 text-[10px] text-slate-400 text-center leading-relaxed">
                       🔐 Integritas Keselamatan Sistem Maksimum. Semua akses fail direkod secara langsung pada kitaran audit.
                     </div>
                   </div>
@@ -657,10 +657,10 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
               id="admin-rooms-tab-container"
             >
               {/* Header and Add Action */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-950/40 p-4.5 rounded-3xl border border-slate-800/80">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-4.5 rounded-3xl border border-slate-200 shadow-sm">
                 <div className="space-y-1">
-                  <h3 className="text-sm font-bold text-slate-100">Katalog & Fasiliti Ruangan SpaceBook</h3>
-                  <p className="text-xs text-slate-400 font-medium">Ubahsuai butiran ruangan, kemudahan, kapasiti, serta visualisasi bilik.</p>
+                  <h3 className="text-sm font-bold text-slate-900">Katalog & Fasiliti Ruangan FKAeSpace</h3>
+                  <p className="text-xs text-slate-500 font-semibold">Ubahsuai butiran ruangan, kemudahan, kapasiti, serta visualisasi bilik.</p>
                 </div>
 
                 <button
@@ -676,17 +676,17 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
 
               {/* Grid of Current Rooms */}
               {loadingRooms ? (
-                <div className="py-24 text-center text-slate-500 flex flex-col items-center justify-center gap-3 bg-slate-950/10 rounded-3xl border border-slate-800/60" id="rooms-loading">
-                  <Loader2 className="w-8 h-8 text-emerald-400 animate-spin" />
+                <div className="py-24 text-center text-slate-500 flex flex-col items-center justify-center gap-3 bg-white rounded-3xl border border-slate-200 shadow-sm" id="rooms-loading">
+                  <Loader2 className="w-8 h-8 text-emerald-600 animate-spin" />
                   <p className="text-xs font-semibold uppercase tracking-wider">Menghubungkan rekod inventori ruangan...</p>
                 </div>
               ) : roomsList.length === 0 ? (
-                <div className="py-24 text-center text-slate-500 flex flex-col items-center justify-center gap-3 bg-slate-900/20 rounded-3xl border border-dashed border-slate-800" id="rooms-empty">
-                  <Database className="w-10 h-10 text-slate-600 animate-pulse" />
+                <div className="py-24 text-center text-slate-500 flex flex-col items-center justify-center gap-3 bg-white rounded-3xl border border-dashed border-slate-300 shadow-sm" id="rooms-empty">
+                  <Database className="w-10 h-10 text-slate-400 animate-pulse" />
                   <p className="text-xs font-bold uppercase tracking-wider">Tiada inventori ruangan berdaftar.</p>
                   <button
                     onClick={() => openRoomModal()}
-                    className="mt-2 text-xs text-emerald-400 underline font-semibold cursor-pointer"
+                    className="mt-2 text-xs text-emerald-600 underline font-semibold cursor-pointer"
                   >
                     Mulakan menambah ruang pertama anda
                   </button>
@@ -699,46 +699,46 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                     return (
                       <div
                         key={room.id}
-                        className="bg-slate-950/20 border border-slate-800/80 rounded-3xl overflow-hidden flex flex-col h-full hover:border-slate-700/80 transition-all shadow-lg group font-sans"
+                        className="bg-white border border-slate-200 rounded-3xl overflow-hidden flex flex-col h-full hover:border-slate-300 transition-all shadow-md hover:shadow-lg group font-sans"
                         id={`admin-room-card-${room.id}`}
                       >
                         {/* Image Preview Container */}
-                        <div className="relative h-44 bg-slate-900 overflow-hidden shrink-0">
+                        <div className="relative h-44 bg-slate-100 overflow-hidden shrink-0">
                           <img
                             src={room.imageUrl || 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800'}
                             alt={room.name}
                             referrerPolicy="no-referrer"
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/10 to-transparent" />
                           
                           {/* Layout Style Badge */}
                           <div className="absolute top-3 left-3">
-                            <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-slate-900/85 backdrop-blur-sm border border-slate-755/50 text-[10px] uppercase font-black tracking-wider text-indigo-300 rounded-lg">
-                              <Layers className="w-3 h-3" />
+                            <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-white/95 backdrop-blur-sm border border-slate-200 text-[10px] uppercase font-black tracking-wider text-indigo-600 rounded-lg">
+                              <Layers className="w-3 h-3 text-indigo-650" />
                               {room.layoutType}
                             </span>
                           </div>
 
                           {/* Capacity indicators */}
-                          <div className="absolute bottom-3 left-3 flex items-center gap-1.5 text-xs text-white font-bold">
-                            <span className="px-2 py-0.5 bg-emerald-500/20 border border-emerald-500/40 text-[10px] text-emerald-300 rounded-md">
+                          <div className="absolute bottom-3 left-3 flex items-center gap-1.5 text-xs text-white font-black">
+                            <span className="px-2 py-0.5 bg-emerald-500/80 border border-emerald-400 text-[10px] uppercase text-white rounded-md">
                               Hingga {room.capacity} Orang
                             </span>
                           </div>
                         </div>
 
                         {/* Description and Info */}
-                        <div className="p-5 flex-1 flex flex-col justify-between gap-5 bg-slate-950/40">
+                        <div className="p-5 flex-1 flex flex-col justify-between gap-5 bg-white">
                           <div className="space-y-3">
                             <div className="space-y-1">
-                              <h4 className="text-sm font-black text-slate-100 group-hover:text-indigo-400 transition-colors truncate">
+                              <h4 className="text-sm font-black text-slate-900 group-hover:text-indigo-600 transition-colors truncate">
                                 {room.name}
                               </h4>
-                              <p className="text-[10px] font-mono text-slate-500 tracking-wider">ID RUANG: {room.id}</p>
+                              <p className="text-[10px] font-mono text-slate-400 tracking-wider">ID RUANG: {room.id}</p>
                             </div>
 
-                            <p className="text-xs text-slate-400 font-medium leading-relaxed line-clamp-2">
+                            <p className="text-xs text-slate-600 font-medium leading-relaxed line-clamp-2">
                               {room.description || 'Tiada keterangan khas.'}
                             </p>
 
@@ -747,9 +747,9 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                               {room.amenities && room.amenities.map((tech, i) => (
                                 <span
                                   key={i}
-                                  className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-slate-950/80 border border-slate-800 text-[9px] text-slate-400 font-semibold rounded"
+                                  className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-slate-50 border border-slate-200 text-[9px] text-slate-600 font-bold rounded"
                                 >
-                                  <Tag className="w-2.5 h-2.5 text-slate-500" />
+                                  <Tag className="w-2.5 h-2.5 text-slate-400" />
                                   {tech}
                                 </span>
                               ))}
@@ -757,9 +757,9 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                           </div>
 
                           {/* Interactive Card Action Footer */}
-                          <div className="pt-4 border-t border-slate-900 flex items-center justify-between gap-2 shrink-0">
-                            <span className="text-[10px] text-slate-500 font-semibold">
-                              Total Tempahan: <strong className="text-slate-350">{bookingsCount}</strong>
+                          <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2 shrink-0">
+                            <span className="text-[10px] text-slate-550 font-bold uppercase tracking-wider">
+                              Total Tempahan: <strong className="text-slate-800">{bookingsCount}</strong>
                             </span>
 
                             <div className="flex items-center gap-1.5">
@@ -767,7 +767,7 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                               <button
                                 type="button"
                                 onClick={() => openRoomModal(room)}
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-505/10 hover:bg-indigo-600/25 border border-indigo-500/30 hover:border-indigo-500 text-xs font-bold text-indigo-400 hover:text-white rounded-xl transition-all cursor-pointer"
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 border border-indigo-200 hover:bg-indigo-100 text-xs font-bold text-indigo-650 rounded-xl transition-all cursor-pointer"
                                 id={`edit-room-btn-${room.id}`}
                               >
                                 <Edit2 className="w-3.5 h-3.5" />
@@ -780,14 +780,14 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                                   <button
                                     type="button"
                                     onClick={() => handleRoomDelete(room.id)}
-                                    className="px-2.5 py-1.5 bg-red-650 hover:bg-red-600 font-bold text-xs text-white rounded-xl transition-all"
+                                    className="px-2.5 py-1.5 bg-red-600 hover:bg-red-500 font-bold text-xs text-white rounded-xl transition-all"
                                   >
                                     Pasti?
                                   </button>
                                   <button
                                     type="button"
                                     onClick={() => setDeleteConfirmId(null)}
-                                    className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-350 rounded-xl"
+                                    className="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-xl"
                                     title="Cancel"
                                   >
                                     <X className="w-3.5 h-3.5" />
@@ -797,7 +797,7 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                                 <button
                                   type="button"
                                   onClick={() => setDeleteConfirmId(room.id)}
-                                  className="p-1.5 hover:p-1.5 text-slate-500 hover:text-red-400 hover:bg-red-500/10 rounded-xl transition-all cursor-pointer"
+                                  className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-all cursor-pointer"
                                   title="Gugurkan Ruangan"
                                 >
                                   <Trash2 className="w-3.5 h-3.5" />
@@ -825,61 +825,61 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
             >
               {/* Statistics Row */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4" id="bookings-metrics-grid">
-                <div className="bg-slate-950/60 p-4.5 rounded-3xl border border-slate-800 shadow-lg flex items-center justify-between">
+                <div className="bg-white p-4.5 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between">
                   <div className="space-y-1">
-                    <span className="text-[10px] uppercase font-extrabold tracking-wider text-slate-500">Jumlah Tempahan</span>
-                    <p className="text-2xl font-black text-slate-100">{bookingsList.length}</p>
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Jumlah Tempahan</span>
+                    <p className="text-2xl font-black text-slate-900">{bookingsList.length}</p>
                   </div>
-                  <div className="p-2.5 bg-slate-900 text-slate-400 rounded-xl border border-slate-800">
+                  <div className="p-2.5 bg-slate-100 text-slate-550 rounded-xl border border-slate-200">
                     <Calendar className="w-5 h-5" />
                   </div>
                 </div>
 
-                <div className="bg-slate-950/60 p-4.5 rounded-3xl border border-slate-800 shadow-lg flex items-center justify-between">
+                <div className="bg-white p-4.5 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between">
                   <div className="space-y-1">
-                    <span className="text-[10px] uppercase font-extrabold tracking-wider text-amber-500">Menunggu Kelulusan</span>
-                    <p className="text-2xl font-black text-amber-400">{bookingsList.filter(b => b.status === 'pending').length}</p>
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-amber-600">Menunggu Kelulusan</span>
+                    <p className="text-2xl font-black text-amber-500">{bookingsList.filter(b => b.status === 'pending').length}</p>
                   </div>
-                  <div className="p-2.5 bg-amber-500/10 text-amber-400 rounded-xl border border-amber-950">
+                  <div className="p-2.5 bg-amber-50 text-amber-500 rounded-xl border border-amber-200">
                     <Clock className="w-5 h-5 animate-pulse" />
                   </div>
                 </div>
 
-                <div className="bg-slate-950/60 p-4.5 rounded-3xl border border-slate-800 shadow-lg flex items-center justify-between">
+                <div className="bg-white p-4.5 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between">
                   <div className="space-y-1">
-                    <span className="text-[10px] uppercase font-extrabold tracking-wider text-emerald-500">Diluluskan</span>
-                    <p className="text-2xl font-black text-emerald-400">{bookingsList.filter(b => b.status === 'approved').length}</p>
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-600">Diluluskan</span>
+                    <p className="text-2xl font-black text-emerald-600">{bookingsList.filter(b => b.status === 'approved').length}</p>
                   </div>
-                  <div className="p-2.5 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-950">
+                  <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl border border-emerald-200">
                     <Check className="w-5 h-5" />
                   </div>
                 </div>
 
-                <div className="bg-slate-955/60 p-4.5 rounded-3xl border border-slate-800 shadow-lg flex items-center justify-between">
+                <div className="bg-white p-4.5 rounded-3xl border border-slate-200 shadow-sm flex items-center justify-between">
                   <div className="space-y-1">
-                    <span className="text-[10px] uppercase font-extrabold tracking-wider text-rose-500">Ditolak</span>
-                    <p className="text-2xl font-black text-rose-400">{bookingsList.filter(b => b.status === 'rejected').length}</p>
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-rose-600">Ditolak</span>
+                    <p className="text-2xl font-black text-rose-500">{bookingsList.filter(b => b.status === 'rejected').length}</p>
                   </div>
-                  <div className="p-2.5 bg-rose-500/10 text-rose-400 rounded-xl border border-rose-950">
+                  <div className="p-2.5 bg-rose-50 text-rose-550 rounded-xl border border-rose-200">
                     <X className="w-5 h-5" />
                   </div>
                 </div>
               </div>
 
               {bookingActionError && (
-                <div className="p-4 bg-red-500/10 border border-red-500/20 text-red-300 text-xs rounded-2xl flex items-start gap-3" id="booking-action-error">
+                <div className="p-4 bg-red-50 border border-red-250 text-red-800 text-xs rounded-2xl flex items-start gap-3" id="booking-action-error">
                   <ShieldAlert className="w-5 h-5 shrink-0" />
                   <div>
                     <p className="font-bold">Ralat Kelulusan:</p>
-                    <p className="text-slate-400 mt-0.5">{bookingActionError}</p>
+                    <p className="text-red-700 mt-0.5">{bookingActionError}</p>
                   </div>
                 </div>
               )}
 
               {/* Filtering + Searching bar */}
-              <div className="bg-slate-955/40 p-4.5 rounded-3xl border border-slate-800/80 flex flex-col md:flex-row gap-4 items-center justify-between" id="bookings-search-filter-row">
+              <div className="bg-white p-4.5 rounded-3xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between" id="bookings-search-filter-row">
                 <div className="relative w-full md:w-96">
-                  <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-505">
+                  <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                     <Search className="w-4 h-4" />
                   </span>
                   <input
@@ -888,7 +888,7 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                     value={bookingSearch}
                     onChange={(e) => setBookingSearch(e.target.value)}
                     placeholder="Cari bilik, pemohon, emel, tujuan..."
-                    className="w-full bg-slate-900/80 pl-10 pr-4 py-2.5 border border-slate-800 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 rounded-xl text-xs text-slate-200 placeholder:text-slate-500"
+                    className="w-full bg-slate-50 pl-10 pr-4 py-2.5 border border-slate-200 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 rounded-xl text-xs text-slate-800 placeholder:text-slate-400"
                     id="booking-panel-search"
                   />
                 </div>
@@ -907,7 +907,7 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                       className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
                         bookingFilter === filter.value
                           ? 'bg-indigo-600 text-white shadow-md'
-                          : 'bg-slate-955/60 border border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
+                          : 'bg-slate-50 border border-slate-200 text-slate-600 hover:text-slate-930 hover:bg-slate-100'
                       }`}
                     >
                       {filter.label}
@@ -916,11 +916,11 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                 </div>
               </div>
 
-              {/* Bookings Table / Cards matching the Dark aesthetic */}
-              <div className="bg-slate-950/20 rounded-3xl border border-slate-800/60 overflow-hidden flex flex-col shadow-inner" id="bookings-ledger-container">
-                <div className="p-4.5 bg-slate-955/50 border-b border-slate-800/80 flex items-center gap-2">
-                  <Calendar className="w-4.5 h-4.5 text-indigo-400" />
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300">Log Pengurusan dan Kelulusan Tempahan</h3>
+              {/* Bookings Table / Cards matching the Light aesthetic */}
+              <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden flex flex-col shadow-sm" id="bookings-ledger-container">
+                <div className="p-4.5 bg-slate-50 border-b border-slate-200 flex items-center gap-2">
+                  <Calendar className="w-4.5 h-4.5 text-indigo-600" />
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700">Log Pengurusan dan Kelulusan Tempahan</h3>
                 </div>
 
                 {(() => {
@@ -946,10 +946,10 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
 
                   if (sorted.length === 0) {
                     return (
-                      <div className="py-24 text-center text-slate-500 flex flex-col items-center justify-center gap-3" id="bookings-ledger-empty">
-                        <Calendar className="w-10 h-10 text-slate-700 animate-pulse" />
-                        <p className="text-xs font-bold uppercase tracking-widest text-slate-600">Tiada Tempahan Dijumpai</p>
-                        <p className="text-xs text-slate-400 max-w-[285px] leading-relaxed mx-auto mt-1">
+                      <div className="py-24 text-center text-slate-400 flex flex-col items-center justify-center gap-3" id="bookings-ledger-empty">
+                        <Calendar className="w-10 h-10 text-slate-300 animate-pulse" />
+                        <p className="text-xs font-bold uppercase tracking-widest text-slate-500">Tiada Tempahan Dijumpai</p>
+                        <p className="text-xs text-slate-450 max-w-[285px] leading-relaxed mx-auto mt-1">
                           Tiada rekod tempahan yang sepadan dengan carian atau penapis saat ini.
                         </p>
                       </div>
@@ -957,16 +957,16 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                   }
 
                   return (
-                    <div className="divide-y divide-slate-800/40" id="bookings-ledger-rows">
+                    <div className="divide-y divide-slate-100" id="bookings-ledger-rows">
                       <AnimatePresence mode="popLayout">
                         {sorted.map((booking) => {
-                          let badgeBg = 'bg-amber-500/10 border-amber-500/30 text-amber-400';
+                          let badgeBg = 'bg-amber-100 border-amber-200 text-amber-800';
                           let badgeLabel = 'Menunggu Kelulusan';
                           if (booking.status === 'approved') {
-                            badgeBg = 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400';
+                            badgeBg = 'bg-emerald-100 border-emerald-200 text-emerald-800';
                             badgeLabel = 'Diluluskan';
                           } else if (booking.status === 'rejected') {
-                            badgeBg = 'bg-rose-500/10 border-rose-500/30 text-rose-400';
+                            badgeBg = 'bg-rose-100 border-rose-200 text-rose-800';
                             badgeLabel = 'Ditolak';
                           }
 
@@ -977,12 +977,12 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
-                              className="p-5 flex flex-col md:flex-row md:items-center justify-between gap-5 hover:bg-slate-800/10 transition-colors"
+                              className="p-5 flex flex-col md:flex-row md:items-center justify-between gap-5 hover:bg-slate-50/70 transition-colors"
                               id={`booking-review-card-${booking.id}`}
                             >
                               <div className="space-y-2.5 flex-1 min-w-0">
                                 <div className="flex items-center gap-2 flex-wrap">
-                                  <span className="text-xs bg-slate-900 border border-slate-800 font-bold text-slate-300 px-2.5 py-0.5 rounded-lg">
+                                  <span className="text-xs bg-slate-100 border border-slate-200 font-bold text-slate-700 px-2.5 py-0.5 rounded-lg">
                                     {booking.roomName}
                                   </span>
                                   <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md border ${badgeBg}`}>
@@ -991,23 +991,23 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                                 </div>
 
                                 <div className="space-y-0.5 min-w-0">
-                                  <p className="text-xs text-slate-300 font-bold bg-slate-950/20 p-2.5 rounded-xl border border-slate-800 break-words leading-relaxed">
+                                  <p className="text-xs text-slate-800 font-bold bg-slate-50 p-2.5 rounded-xl border border-slate-150 break-words leading-relaxed">
                                     "{booking.purpose}"
                                   </p>
-                                  <p className="text-[11px] text-slate-400 font-semibold flex items-center gap-1.5 flex-wrap truncate mt-1">
+                                  <p className="text-[11px] text-slate-500 font-semibold flex items-center gap-1.5 flex-wrap truncate mt-1">
                                     <span>Dipohon oleh:</span>
-                                    <strong className="text-slate-300 truncate">{booking.userName}</strong>
-                                    <span className="text-slate-500 truncate">({booking.userEmail})</span>
+                                    <strong className="text-slate-800 truncate">{booking.userName}</strong>
+                                    <span className="text-slate-400 truncate">({booking.userEmail})</span>
                                   </p>
                                 </div>
 
-                                <div className="flex flex-wrap gap-4 text-[11px] text-slate-400 font-medium font-sans">
+                                <div className="flex flex-wrap gap-4 text-[11px] text-slate-500 font-bold font-sans">
                                   <span className="flex items-center gap-1.5">
-                                    <Calendar className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                                    <Calendar className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
                                     {booking.date}
                                   </span>
                                   <span className="flex items-center gap-1.5">
-                                    <Clock className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                                    <Clock className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
                                     {booking.startTime} - {booking.endTime}
                                   </span>
                                 </div>
@@ -1019,11 +1019,11 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                                       target="_blank"
                                       referrerPolicy="no-referrer"
                                       rel="noopener noreferrer"
-                                      className="inline-flex items-center gap-1.5 text-[10px] text-indigo-400 hover:text-indigo-300 font-bold bg-indigo-500/5 hover:bg-indigo-500/10 border border-indigo-500/20 hover:border-indigo-500/50 px-2.5 py-1 rounded-lg transition-all"
+                                      className="inline-flex items-center gap-1.5 text-[10px] text-indigo-650 hover:text-indigo-700 font-bold bg-indigo-50/50 hover:bg-indigo-100 border border-indigo-150 px-2.5 py-1 rounded-lg transition-all"
                                     >
-                                      <Paperclip className="w-3 h-3 text-indigo-400 shrink-0" />
+                                      <Paperclip className="w-3 h-3 text-indigo-600 shrink-0" />
                                       <span className="max-w-[190px] truncate">{booking.attachmentName || 'Dokumen Sokongan'}</span>
-                                      <ArrowUpRight className="w-3 h-3 text-indigo-400" />
+                                      <ArrowUpRight className="w-3 h-3 text-indigo-600" />
                                     </a>
                                   </div>
                                 )}
@@ -1036,7 +1036,7 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                                       type="button"
                                       onClick={() => handleReviewBooking(booking, 'approved')}
                                       disabled={bookingLoadingId !== null}
-                                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 font-bold text-xs text-white rounded-xl transition-all active:scale-95 cursor-pointer shadow-md shadow-emerald-600/10"
+                                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 font-bold text-xs text-white rounded-xl transition-all active:scale-95 cursor-pointer shadow-md shadow-emerald-500/10"
                                       id={`approve-btn-${booking.id}`}
                                     >
                                       {bookingLoadingId === `${booking.id}-approved` ? (
@@ -1052,7 +1052,7 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                                       type="button"
                                       onClick={() => handleReviewBooking(booking, 'rejected')}
                                       disabled={bookingLoadingId !== null}
-                                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/30 text-rose-300 disabled:opacity-50 font-bold text-xs rounded-xl transition-all active:scale-95 cursor-pointer"
+                                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 disabled:opacity-50 font-bold text-xs rounded-xl transition-all active:scale-95 cursor-pointer"
                                       id={`reject-btn-${booking.id}`}
                                     >
                                       {bookingLoadingId === `${booking.id}-rejected` ? (
@@ -1067,12 +1067,12 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                                   </>
                                 ) : (
                                   <div className="flex items-center gap-2.5">
-                                    <span className="text-[10px] text-slate-500 bg-slate-950/40 border border-slate-900 px-2 py-1 rounded-lg font-semibold">Tindakan Selesai</span>
+                                    <span className="text-[10px] text-slate-500 bg-slate-50 border border-slate-200 px-2 py-1 rounded-lg font-bold">Tindakan Selesai</span>
                                     <button
                                       type="button"
                                       onClick={() => handleReviewBooking(booking, booking.status === 'approved' ? 'rejected' : 'approved')}
                                       disabled={bookingLoadingId !== null}
-                                      className="text-[10px] font-bold uppercase tracking-wider text-indigo-400 hover:text-indigo-300 border-b border-dashed border-indigo-400/30 hover:border-indigo-400 transition-all cursor-pointer"
+                                      className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 hover:text-indigo-700 border-b border-dashed border-indigo-400/30 hover:border-indigo-600 transition-all cursor-pointer"
                                       id={`override-btn-${booking.id}`}
                                     >
                                       {bookingLoadingId === `${booking.id}-approved` || bookingLoadingId === `${booking.id}-rejected` ? (
@@ -1115,19 +1115,19 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
               initial={{ scale: 0.95, opacity: 0, y: 15 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 15 }}
-              className="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl relative z-10 flex flex-col max-h-[90vh]"
+              className="bg-white border border-slate-200 w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl relative z-10 flex flex-col max-h-[90vh]"
             >
               {/* Modal Banner Title */}
-              <div className="p-5 bg-slate-950/60 border-b border-slate-800 flex items-center justify-between">
+              <div className="p-5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <div className={`p-2 rounded-xl text-white ${editingRoomId ? 'bg-indigo-650' : 'bg-emerald-600'}`}>
                     <Layers className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-slate-100">
+                    <h3 className="text-sm font-bold text-slate-900">
                       {editingRoomId ? 'Ubahsuai Spesifikasi Ruang' : 'Pendaftaran Ruangan Mesyuarat Baru'}
                     </h3>
-                    <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mt-0.5">Setup Ruang Kerja & Kolaborasi</p>
+                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-0.5">Setup Ruang Kerja & Kolaborasi</p>
                   </div>
                 </div>
 
@@ -1135,17 +1135,17 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                   type="button"
                   disabled={savingProgress}
                   onClick={() => setIsRoomModalOpen(false)}
-                  className="p-1.5 bg-slate-850 hover:bg-slate-800 text-slate-450 hover:text-white rounded-xl transition-colors disabled:opacity-50 cursor-pointer"
+                  className="p-1.5 bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 rounded-xl transition-colors disabled:opacity-50 cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
               {/* Form Content Scrolling container */}
-              <form onSubmit={handleRoomSubmit} className="flex-1 overflow-y-auto p-6 space-y-6 text-xs text-slate-200" id="room-specs-form">
+              <form onSubmit={handleRoomSubmit} className="flex-1 overflow-y-auto p-6 space-y-6 text-xs text-slate-700" id="room-specs-form">
                 
                 {formError && (
-                  <div className="p-3.5 bg-red-500/10 border border-red-500/20 text-red-300 rounded-xl font-medium" id="form-validation-error">
+                  <div className="p-3.5 bg-red-50 border border-red-250 text-red-800 rounded-xl font-bold" id="form-validation-error">
                     🚨 {formError}
                   </div>
                 )}
@@ -1153,7 +1153,7 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                 {/* Identity and ID settings */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="block text-slate-400 font-bold uppercase tracking-wider text-[10px]">ID Bilik Unik (Slug)*</label>
+                    <label className="block text-slate-500 font-bold uppercase tracking-wider text-[10px]">ID Bilik Unik (Slug)*</label>
                     <div className="relative">
                       <input
                         type="text"
@@ -1162,22 +1162,22 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                         value={roomForm.id}
                         onChange={(e) => setRoomForm({ ...roomForm, id: e.target.value })}
                         placeholder="contoh: bilik-alpha-1"
-                        className="w-full bg-slate-950/40 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 font-mono text-slate-100 outline-none transition-colors disabled:opacity-60 disabled:bg-slate-950/80"
+                        className="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 font-mono text-slate-800 outline-none transition-colors disabled:opacity-60 disabled:bg-slate-100"
                         id="form-room-id"
                       />
                       {editingRoomId && (
-                        <span className="absolute right-3.5 top-3 text-slate-500" title="Alamat ID unik tidak boleh diubahsuai">
+                        <span className="absolute right-3.5 top-3 text-slate-400" title="Alamat ID unik tidak boleh diubahsuai">
                           🔒
                         </span>
                       )}
                     </div>
-                    <p className="text-[10px] text-slate-500 leading-snug">
+                    <p className="text-[10px] text-slate-450 leading-snug">
                       {editingRoomId ? 'Pengenal pangkalan data (Slug) selamat dikunci.' : 'Hanya huruf, nombor, tanda sempang (-), dan garis bawah (_). Max: 128 aksara.'}
                     </p>
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="block text-slate-400 font-bold uppercase tracking-wider text-[10px]">Nama Ruangan*</label>
+                    <label className="block text-slate-500 font-bold uppercase tracking-wider text-[10px]">Nama Ruangan*</label>
                     <input
                       type="text"
                       required
@@ -1185,17 +1185,17 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                       value={roomForm.name}
                       onChange={(e) => setRoomForm({ ...roomForm, name: e.target.value })}
                       placeholder="contoh: Bilik Perbincangan Alpha"
-                      className="w-full bg-slate-950/40 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 text-slate-100 outline-none transition-colors disabled:opacity-50"
+                      className="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 text-slate-800 outline-none transition-colors disabled:opacity-50"
                       id="form-room-name"
                     />
-                    <p className="text-[10px] text-slate-500">Nama mesra pengguna untuk katalog paparan.</p>
+                    <p className="text-[10px] text-slate-450">Nama mesra pengguna untuk katalog paparan.</p>
                   </div>
                 </div>
 
                 {/* Capacity and Layout configurations */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="block text-slate-400 font-bold uppercase tracking-wider text-[10px]">Kapasiti Maksimum Personnel*</label>
+                    <label className="block text-slate-500 font-bold uppercase tracking-wider text-[10px]">Kapasiti Maksimum Personnel*</label>
                     <input
                       type="number"
                       required
@@ -1205,52 +1205,52 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                       value={roomForm.capacity}
                       onChange={(e) => setRoomForm({ ...roomForm, capacity: Number(e.target.value) })}
                       placeholder="contoh: 12"
-                      className="w-full bg-slate-950/40 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 text-slate-100 outline-none transition-colors disabled:opacity-50"
+                      className="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 text-slate-800 outline-none transition-colors disabled:opacity-50"
                       id="form-room-capacity"
                     />
-                    <p className="text-[10px] text-slate-500">Kapasiti maksimum yang dibenarkan dalam satu sesi.</p>
+                    <p className="text-[10px] text-slate-450">Kapasiti maksimum yang dibenarkan dalam satu sesi.</p>
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="block text-slate-400 font-bold uppercase tracking-wider text-[10px]">Jenis Susun Atur Kerusi*</label>
+                    <label className="block text-slate-500 font-bold uppercase tracking-wider text-[10px]">Jenis Susun Atur Kerusi*</label>
                     <select
                       required
                       disabled={savingProgress}
                       value={roomForm.layoutType}
                       onChange={(e) => setRoomForm({ ...roomForm, layoutType: e.target.value as RoomLayoutType })}
-                      className="w-full bg-slate-950/40 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 text-slate-100 outline-none transition-colors disabled:opacity-50 appearance-none text-xs"
+                      className="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 text-slate-800 outline-none transition-colors disabled:opacity-50 appearance-none text-xs"
                       id="form-room-layout"
                     >
-                      <option value="Boardroom" className="bg-slate-900 text-slate-200">Boardroom (Meja Bulat Eksekutif)</option>
-                      <option value="Conference" className="bg-slate-900 text-slate-200">Conference (Persidangan Umum)</option>
-                      <option value="U-Shape" className="bg-slate-900 text-slate-200">U-Shape (Bentuk U Interaktif)</option>
-                      <option value="Lecture" className="bg-slate-900 text-slate-200">Lecture (Dewan Syarahan)</option>
-                      <option value="Project Room" className="bg-slate-900 text-slate-200">Project Room (Bilik Sprints Projek)</option>
+                      <option value="Boardroom" className="bg-white text-slate-805">Boardroom (Meja Bulat Eksekutif)</option>
+                      <option value="Conference" className="bg-white text-slate-805">Conference (Persidangan Umum)</option>
+                      <option value="U-Shape" className="bg-white text-slate-805">U-Shape (Bentuk U Interaktif)</option>
+                      <option value="Lecture" className="bg-white text-slate-805">Lecture (Dewan Syarahan)</option>
+                      <option value="Project Room" className="bg-white text-slate-805">Project Room (Bilik Sprints Projek)</option>
                     </select>
-                    <p className="text-[10px] text-slate-500">Gaya konfigurasi susun atur dalam bilik.</p>
+                    <p className="text-[10px] text-slate-450">Gaya konfigurasi susun atur dalam bilik.</p>
                   </div>
                 </div>
 
                 {/* Amenities / Kemudahan tags */}
                 <div className="space-y-1.5">
-                  <label className="block text-slate-400 font-bold uppercase tracking-wider text-[10px]">Kemudahan Alat & Teknologi (Pisahkan dengan koma)</label>
+                  <label className="block text-slate-500 font-bold uppercase tracking-wider text-[10px]">Kemudahan Alat & Teknologi (Pisahkan dengan koma)</label>
                   <input
                     type="text"
                     disabled={savingProgress}
                     value={roomForm.amenitiesInput}
                     onChange={(e) => setRoomForm({ ...roomForm, amenitiesInput: e.target.value })}
                     placeholder="contoh: Projektor Laser, Surround Audio, Wi-Fi 6-E, Coffee Station"
-                    className="w-full bg-slate-950/40 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 text-slate-100 outline-none transition-colors disabled:opacity-50"
+                    className="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 text-slate-800 outline-none transition-colors disabled:opacity-50"
                     id="form-room-amenities"
                   />
-                  <p className="text-[10px] text-slate-500">
+                  <p className="text-[10px] text-slate-450">
                     Sistem akan menyusun perkataan ini menjadi tag kecil secara automatik.
                   </p>
                 </div>
 
                 {/* Description */}
                 <div className="space-y-1.5">
-                  <label className="block text-slate-400 font-bold uppercase tracking-wider text-[10px]">Keterangan Huraian Ruang*</label>
+                  <label className="block text-slate-500 font-bold uppercase tracking-wider text-[10px]">Keterangan Huraian Ruang*</label>
                   <textarea
                     required
                     rows={3}
@@ -1259,15 +1259,15 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                     value={roomForm.description}
                     onChange={(e) => setRoomForm({ ...roomForm, description: e.target.value })}
                     placeholder="Huraikan kelebihan, kelengkapan, dan kegunaan ideal ruangan mesyuarat atau persidangan ini..."
-                    className="w-full bg-slate-950/40 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 text-slate-100 outline-none transition-colors disabled:opacity-50 resize-y"
+                    className="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 text-slate-800 outline-none transition-colors disabled:opacity-50 resize-y"
                     id="form-room-description"
                   />
                 </div>
 
                 {/* Core Image Setup with Presets */}
-                <div className="space-y-3.5 pt-2 border-t border-slate-800/60">
+                <div className="space-y-3.5 pt-4 border-t border-slate-150">
                   <div className="space-y-1.5">
-                    <label className="block text-slate-400 font-bold uppercase tracking-wider text-[10px]">URL Gambar Ruangan (Alamat Web)*</label>
+                    <label className="block text-slate-500 font-bold uppercase tracking-wider text-[10px]">URL Gambar Ruangan (Alamat Web)*</label>
                     <input
                       type="url"
                       required
@@ -1275,14 +1275,14 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                       value={roomForm.imageUrl}
                       onChange={(e) => setRoomForm({ ...roomForm, imageUrl: e.target.value })}
                       placeholder="Masukkan apa-apa pautan imej web yang sah..."
-                      className="w-full bg-slate-950/40 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 text-slate-100 font-mono outline-none transition-colors disabled:opacity-50"
+                      className="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-3.5 py-2.5 text-slate-800 font-mono outline-none transition-colors disabled:opacity-50"
                       id="form-room-image-url"
                     />
                   </div>
 
                   {/* Thumbnail choices */}
                   <div className="space-y-2">
-                    <span className="block text-slate-500 font-bold uppercase text-[9px] tracking-wider">Cepat Pilih dari Preset Gambar Premium:</span>
+                    <span className="block text-slate-400 font-bold uppercase text-[9px] tracking-wider">Cepat Pilih dari Preset Gambar Premium:</span>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2" id="image-preset-thumbnails">
                       {ROOM_IMAGE_PRESETS.map((preset, index) => {
                         const isPresetSelected = roomForm.imageUrl === preset.url;
@@ -1292,10 +1292,10 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                             type="button"
                             disabled={savingProgress}
                             onClick={() => setRoomForm({ ...roomForm, imageUrl: preset.url })}
-                            className={`p-1.5 rounded-xl border text-left flex items-center gap-2 transition-all ${
+                            className={`p-1.5 rounded-xl border text-left flex items-center gap-2 transition-all cursor-pointer ${
                               isPresetSelected
-                                ? 'bg-indigo-650/30 border-indigo-500 text-white shadow'
-                                : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 text-slate-400 hover:text-slate-200'
+                                ? 'bg-indigo-50 border-indigo-500 text-indigo-755 shadow'
+                                : 'bg-slate-50/70 border-slate-200 hover:border-slate-300 text-slate-600 hover:text-slate-800'
                             }`}
                           >
                             <img
@@ -1315,8 +1315,8 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
 
                   {/* Live Layout image aspect review */}
                   <div className="space-y-2">
-                    <span className="block text-slate-500 font-bold uppercase text-[9px] tracking-wider">Pratonton Visual Langsung:</span>
-                    <div className="h-36 bg-slate-950/40 rounded-2xl overflow-hidden border border-slate-800 relative flex items-center justify-center">
+                    <span className="block text-slate-400 font-bold uppercase text-[9px] tracking-wider">Pratonton Visual Langsung:</span>
+                    <div className="h-36 bg-slate-50 rounded-2xl overflow-hidden border border-slate-200 relative flex items-center justify-center">
                       {roomForm.imageUrl ? (
                         <img
                           src={roomForm.imageUrl}
@@ -1329,14 +1329,14 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                           }}
                         />
                       ) : (
-                        <div className="text-slate-600 flex flex-col items-center justify-center gap-1.5">
+                        <div className="text-slate-400 flex flex-col items-center justify-center gap-1.5">
                           <Image className="w-8 h-8 opacity-40" />
                           <span className="text-[10px]">Tiada URL imej disasarkan</span>
                         </div>
                       )}
                       
-                      <div className="absolute inset-0 bg-slate-950/20 pointer-events-none" />
-                      <div className="absolute bottom-2 right-2 px-2 py-0.5 bg-slate-900/90 text-[8px] font-black uppercase tracking-widest text-slate-400 rounded-md border border-slate-800/50">
+                      <div className="absolute inset-0 bg-slate-900/5 pointer-events-none" />
+                      <div className="absolute bottom-2 right-2 px-2 py-0.5 bg-slate-900/90 text-[8px] font-black uppercase tracking-widest text-slate-300 rounded-md border border-slate-800/20">
                         LIVE PREVIEW
                       </div>
                     </div>
@@ -1344,12 +1344,12 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
                 </div>
 
                 {/* Confirmation Footer */}
-                <div className="pt-6 border-t border-slate-800 flex items-center justify-end gap-3 shrink-0">
+                <div className="pt-6 border-t border-slate-150 flex items-center justify-end gap-3 shrink-0">
                   <button
                     type="button"
                     disabled={savingProgress}
                     onClick={() => setIsRoomModalOpen(false)}
-                    className="px-4 py-2.5 bg-slate-800 hover:bg-slate-755 text-slate-350 hover:text-white rounded-2xl transition-all disabled:opacity-50 font-bold"
+                    className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-800 rounded-2xl transition-all disabled:opacity-50 font-bold cursor-pointer"
                   >
                     Batal
                   </button>
@@ -1380,8 +1380,8 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
         )}
       </AnimatePresence>
 
-      <footer className="bg-slate-955/40 border-t border-slate-900 py-6 mt-12 text-center text-[10px] font-semibold text-slate-600 uppercase tracking-widest" id="admin-workspace-footer">
-        © 2026 Admin Control Console • SpaceBook Systems Certified
+      <footer className="bg-white border-t border-slate-200 py-6 mt-12 text-center text-[10px] font-bold text-slate-450 uppercase tracking-widest" id="admin-workspace-footer">
+        © 2026 Admin Control Console • FKAeSpace Systems Certified
       </footer>
 
     </div>

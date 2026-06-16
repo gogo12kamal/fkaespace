@@ -65,7 +65,7 @@ export default function Dashboard({ user }: DashboardProps) {
           const initialProfile: UserProfile = {
             uid: user.uid,
             email: user.email || '',
-            displayName: user.displayName || 'SpaceBook User',
+            displayName: user.displayName || 'FKAeSpace User',
             role: userRole,
             createdAt: new Date().toISOString()
           };
@@ -154,12 +154,12 @@ export default function Dashboard({ user }: DashboardProps) {
           
           {/* Logo & Info */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-indigo-100">
-              S
+            <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shadow-md shadow-indigo-100">
+              FKA
             </div>
             <div>
-              <h1 className="text-base font-bold text-slate-900 tracking-tight">SpaceBook</h1>
-              <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Enterprise Scheduler</p>
+              <h1 className="text-base font-bold text-slate-900 tracking-tight">FKAeSpace</h1>
+              <p className="text-[10px] text-indigo-600 font-semibold uppercase tracking-wider">FKA Space Reservation System</p>
             </div>
           </div>
 
@@ -343,7 +343,7 @@ export default function Dashboard({ user }: DashboardProps) {
                         currentUser={{
                           uid: user.uid,
                           email: user.email || '',
-                          displayName: user.displayName || user.email?.split('@')[0] || 'SpaceBook User'
+                          displayName: user.displayName || user.email?.split('@')[0] || 'FKAeSpace User'
                         }}
                         existingBookings={bookings}
                         onBookingSuccess={() => {
@@ -418,8 +418,8 @@ export default function Dashboard({ user }: DashboardProps) {
       </main>
 
       {/* Aesthetic Footer */}
-      <footer className="bg-white border-t border-slate-100 py-6 mt-12 text-center text-[11px] font-medium text-slate-400 uppercase tracking-wider" id="dashboard-footer">
-        © 2026 SpaceBook Inc • Secure Physical Capital Optimizer
+      <footer className="bg-white border-t border-slate-100 py-6 mt-12 text-center text-[11px] font-semibold text-indigo-600 uppercase tracking-wider" id="dashboard-footer">
+        © 2026 FKAeSpace • FKA Space Reservation System
       </footer>
     </div>
   );

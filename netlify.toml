@@ -1,4 +1,3 @@
-# Kandungan netlify.toml yang telah disediakan:
 [build]
   command = "npm run build"
   publish = "dist"

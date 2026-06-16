@@ -23,13 +23,13 @@ export default function App() {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center gap-3 text-slate-400 font-medium font-sans" id="app-initializing-state">
         <Loader2 className="w-8 h-8 text-indigo-600 animate-spin" />
-        <p className="text-sm">Initializing SpaceBook safety gateway...</p>
+        <p className="text-sm">Initializing FKAeSpace safety gateway...</p>
       </div>
     );
   }
 
   return (
-    <div className="antialiased text-slate-800" id="spacebook-root">
+    <div className="antialiased text-slate-800" id="fkaespace-root">
       {user ? (
         <Dashboard user={user} />
       ) : (

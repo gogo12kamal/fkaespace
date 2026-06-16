@@ -158,13 +158,13 @@ export default function AdminPanel({ bookings, onReviewSuccess }: AdminPanelProp
       <div className="bg-white rounded-3xl border border-slate-100 shadow-md shadow-slate-100/50 overflow-hidden" id="admin-bookings-table">
         <div className="p-5 border-b border-slate-100 flex items-center gap-2" id="table-title">
           <ShieldCheck className="w-5 h-5 text-indigo-600" />
-          <h3 className="text-sm font-bold text-slate-800">Global SpaceBook Reservations Registry</h3>
+          <h3 className="text-sm font-bold text-slate-800">Global FKAeSpace Reservations Registry</h3>
         </div>
 
         {filteredBookings.length === 0 ? (
           <div className="py-16 text-center text-slate-400 font-medium text-sm flex flex-col items-center justify-center gap-3 bg-slate-50" id="table-empty">
             <Calendar className="w-8 h-8 text-slate-300" />
-            <p>No reservations matching filters are logged in SpaceBook.</p>
+            <p>No reservations matching filters are logged in FKAeSpace.</p>
           </div>
         ) : (
           <div className="divide-y divide-slate-100" id="global-booking-list">

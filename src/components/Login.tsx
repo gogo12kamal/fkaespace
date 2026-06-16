@@ -81,7 +81,7 @@ export default function Login() {
       await setDoc(doc(db, 'users', user.uid), {
         uid: user.uid,
         email: user.email?.toLowerCase() || '',
-        displayName: user.displayName || 'SpaceBook User',
+        displayName: user.displayName || 'FKAeSpace User',
         role: role,
         createdAt: new Date().toISOString()
       }, { merge: true });
@@ -106,13 +106,13 @@ export default function Login() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-indigo-600 text-white shadow-xl shadow-indigo-100 mb-4"
           >
-            <span className="font-bold text-2xl tracking-wider">S</span>
+            <span className="font-bold text-xl tracking-wider">FKA</span>
           </motion.div>
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 font-sans">
-            SpaceBook
+            FKAeSpace
           </h2>
-          <p className="mt-2 text-sm text-slate-600">
-            Secure meeting room booking portal
+          <p className="mt-2 text-sm text-slate-600 font-medium">
+            FKA Space Reservation System
           </p>
         </div>
 

@@ -213,7 +213,7 @@ export default function BookingForm({ selectedRoom, currentUser, onBookingSucces
         roomName: selectedRoom.name,
         userId: currentUser.uid,
         userEmail: currentUser.email,
-        userName: currentUser.displayName || 'SpaceBook User',
+        userName: currentUser.displayName || 'FKAeSpace User',
         date,
         startTime,
         endTime,
