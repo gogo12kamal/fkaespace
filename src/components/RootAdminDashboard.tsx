@@ -7,7 +7,7 @@ import {
   LogOut, Shield, Users, Calendar, Paperclip, Search, 
   FileText, ExternalLink, Database, Loader2, ArrowUpRight,
   User as UserIcon, HelpCircle, ShieldAlert, Plus, Edit2, 
-  Trash2, Image, Layers, Tag, X, Check, Eye, Clock
+  Trash2, Image, Layers, Tag, X, Check, Eye, Clock, Download
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -317,6 +317,126 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
     }
   };
 
+  // Export Bookings to CSV
+  const handleExportBookingsToCSV = () => {
+    if (bookingsList.length === 0) {
+      alert("Tiada rekod tempahan untuk dimuat turun.");
+      return;
+    }
+
+    const headers = [
+      "ID Tempahan",
+      "Nama Ruangan",
+      "ID Ruangan",
+      "Format Susun Atur",
+      "Nama Pengguna",
+      "E-mel Pengguna",
+      "ID Pengguna",
+      "Tarikh",
+      "Masa Mula",
+      "Masa Tamat",
+      "Tujuan / Konten",
+      "Status",
+      "Fail Lampiran",
+      "Nama Lampiran",
+      "Tarikh Dibuat"
+    ];
+
+    const rows = bookingsList.map(booking => {
+      const relatedRoom = roomsList.find(r => r.id === booking.roomId);
+      const layoutStr = relatedRoom ? relatedRoom.layoutType : "N/A";
+      
+      let createdAtStr = "";
+      if (booking.createdAt) {
+        if (typeof booking.createdAt.toDate === "function") {
+          createdAtStr = booking.createdAt.toDate().toISOString();
+        } else if (booking.createdAt.seconds) {
+          createdAtStr = new Date(booking.createdAt.seconds * 1000).toISOString();
+        } else {
+          createdAtStr = String(booking.createdAt);
+        }
+      }
+
+      return [
+        booking.id,
+        booking.roomName,
+        booking.roomId,
+        layoutStr,
+        booking.userName,
+        booking.userEmail,
+        booking.userId,
+        booking.date,
+        booking.startTime,
+        booking.endTime,
+        booking.purpose ? booking.purpose.replace(/"/g, '""') : "",
+        booking.status,
+        booking.attachmentUrl || "",
+        booking.attachmentName ? booking.attachmentName.replace(/"/g, '""') : "",
+        createdAtStr
+      ];
+    });
+
+    const csvContent = [
+      headers.join(","),
+      ...rows.map(row => row.map(val => `"${val}"`).join(","))
+    ].join("\n");
+
+    const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `rekod_tempahan_FKAeSpace_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Export Users to CSV
+  const handleExportUsersToCSV = () => {
+    if (usersList.length === 0) {
+      alert("Tiada rekod pengguna untuk dimuat turun.");
+      return;
+    }
+
+    const headers = [
+      "ID Pengguna (UID)",
+      "Nama Pengguna",
+      "E-mel Pengguna",
+      "Peranan / Role",
+      "Sejarah Jumlah Tempahan",
+      "Status Fail Lampiran"
+    ];
+
+    const rows = usersList.map(u => {
+      const userBookings = bookingsList.filter(b => b.userId === u.uid);
+      const fileCount = userBookings.filter(b => b.attachmentUrl).length;
+      return [
+        u.uid,
+        u.displayName || "Tiada Nama",
+        u.email,
+        u.role,
+        userBookings.length,
+        `${fileCount} Fail`
+      ];
+    });
+
+    const csvContent = [
+      headers.join(","),
+      ...rows.map(row => row.map(val => `"${val}"`).join(","))
+    ].join("\n");
+
+    const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `senarai_pengguna_FKAeSpace_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans" id="admin-workspace-layout">
       
@@ -434,6 +554,41 @@ export default function RootAdminDashboard({ user }: RootAdminDashboardProps) {
             </div>
           </div>
         )}
+
+        {/* CSV Export & Audit Tool Card */}
+        <div className="bg-white border border-slate-200 p-5 rounded-3xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-md shadow-rose-950/5 border-l-4 border-l-[#800000]" id="admin-csv-tools-card">
+          <div className="flex items-center gap-3.5">
+            <div className="p-2.5 bg-[#800000]/10 rounded-2xl text-[#800000] shrink-0">
+              <Download className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Muat Turun Laporan & Data Sistem (CSV Export)</h3>
+              <p className="text-xs text-slate-500 mt-0.5 font-medium leading-relaxed">
+                Eksport senarai rekod tempahan dan direktori maklumat profil pengguna ke fail format CSV.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap items-center gap-2.5">
+            <button
+              type="button"
+              onClick={handleExportBookingsToCSV}
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-xs font-bold text-slate-700 border border-slate-200 rounded-xl transition-all shadow-sm cursor-pointer"
+              id="export-bookings-csv-btn"
+            >
+              <Download className="w-4 h-4 text-slate-500" />
+              CSV Tempahan ({bookingsList.length})
+            </button>
+            <button
+              type="button"
+              onClick={handleExportUsersToCSV}
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 active:scale-95 text-xs font-bold text-slate-700 border border-slate-200 rounded-xl transition-all shadow-sm cursor-pointer"
+              id="export-users-csv-btn"
+            >
+              <Users className="w-4 h-4 text-slate-500" />
+              CSV Pengguna ({usersList.length})
+            </button>
+          </div>
+        </div>
 
         {/* Dynamic Tab Body rendering */}
         <AnimatePresence mode="wait">
